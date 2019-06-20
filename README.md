@@ -1,2 +1,2 @@
-# MLB_Data_Lab
+# pyMLB
 Python code for the extraction, loading, and analyzing of Major League Baseball data
