@@ -2,6 +2,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import urllib
 import re
+from calendar import month_abbr
 
 def br_scrapper(player, year):
     url = "https://www.baseball-reference.com/players/gl.fcgi?id={}&t=b&year={}".format(player, year)
@@ -30,6 +31,23 @@ def br_scrapper(player, year):
     
     data['Yr'] = year
     data['Player'] = player_name
-    data['Bats'] = bats 
+    data['Bats'] = bats
+    data['Month'] = data['Date'].str.split(" ").str[0]
+    data['Day'] = data['Date'].str.split(" ").str[1]
+    
+    month_dict = dict((v,k) for k,v in enumerate(month_abbr))
+    
+    mth = []
+    for i in data['Month']:
+        mth.append(month_dict[i])
+    
+    data['Month'] = mth
+    data['Day'] = data['Day'].astype(str).astype(int)
+    
+    data['dt'] = pd.to_datetime(data['Yr']*10000+data['Month']*100+data['Day'], format = '%Y%m%d')
+    
+    data = data.drop(["Yr", "Month", "Day"], axis=1)
+    
+    data = data.set_index('dt')
     
     return(data)
