@@ -6,14 +6,23 @@ Draft Kings Scoring
 Hitters
 
 Single +3 Pts
+
 Double +5 Pts
+
 Triple +8 Pts
+
 Home Run +10 Pts
+
 Run Batted In +2 Pts
+
 Run +2 Pts
+
 Base on Balls +2 Pts
+
 Hit By Pitch +2 Pts
+
 Stolen Base +5 Pts
+
 
 Pitchers
 
